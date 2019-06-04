@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E509D755-92C4-4CF0-A7B3-B51CE27DA4EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MailSender.lib</RootNamespace>
+    <AssemblyName>MailSender.lib</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\EF\MailSenderDBContext.cs" />
+    <Compile Include="Data\EF\Migrations\201906011654004_Initial.cs" />
+    <Compile Include="Data\EF\Migrations\201906011654004_Initial.Designer.cs">
+      <DependentUpon>201906011654004_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Migrations\201906011713221_RecipientAddDescription.cs" />
+    <Compile Include="Data\EF\Migrations\201906011713221_RecipientAddDescription.Designer.cs">
+      <DependentUpon>201906011713221_RecipientAddDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Migrations\Configuration.cs" />
+    <Compile Include="Data\Linq2SQL\MailSenderDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MailSenderDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Linq2SQL\Recipient.cs" />
+    <Compile Include="Data\TestData.cs" />
+    <Compile Include="Entityes\Base\BaseEntity.cs" />
+    <Compile Include="Entityes\Base\Human.cs" />
+    <Compile Include="Entityes\Base\NamedEntity.cs" />
+    <Compile Include="Entityes\MailMessage.cs" />
+    <Compile Include="Entityes\MailsList.cs" />
+    <Compile Include="Entityes\Recipient.cs" />
+    <Compile Include="Entityes\RecipientsList.cs" />
+    <Compile Include="Entityes\SchedulerTask.cs" />
+    <Compile Include="Entityes\Sender.cs" />
+    <Compile Include="Entityes\Server.cs" />
+    <Compile Include="MVVM\LamdaCommand.cs" />
+    <Compile Include="MVVM\ViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\InMemory\DataInMemory.cs" />
+    <Compile Include="Services\InMemory\MailMessagesDataInMemory.cs" />
+    <Compile Include="Services\InMemory\MailsListDataInMemory.cs" />
+    <Compile Include="Services\InMemory\RecipientsDataInMemory.cs" />
+    <Compile Include="Services\InMemory\RecipientsListsDataInMemory.cs" />
+    <Compile Include="Services\InMemory\SchedulerTasksDataInMemory.cs" />
+    <Compile Include="Services\InMemory\SendersDataInMemory.cs" />
+    <Compile Include="Services\InMemory\ServersDataInMemory.cs" />
+    <Compile Include="Services\Interfaces\IDataService.cs" />
+    <Compile Include="Services\Interfaces\IMailMessagesData.cs" />
+    <Compile Include="Services\Interfaces\IMailSenderService.cs" />
+    <Compile Include="Services\Interfaces\IMailsListsData.cs" />
+    <Compile Include="Services\Interfaces\IRecipientsData.cs" />
+    <Compile Include="Services\Interfaces\IRecipientsListsData.cs" />
+    <Compile Include="Services\Interfaces\ISchedulerTasksData.cs" />
+    <Compile Include="Services\Interfaces\ISendersData.cs" />
+    <Compile Include="Services\Interfaces\IServersData.cs" />
+    <Compile Include="Services\Linq2SQL\RecipientsDataLinq2SQL.cs" />
+    <Compile Include="Services\SmtpMailSenderService.cs" />
+    <Compile Include="Services\StringEncoder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Data\Linq2SQL\MailSenderDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MailSenderDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\Linq2SQL\MailSenderDB.dbml.layout">
+      <DependentUpon>MailSenderDB.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\EF\Migrations\201906011654004_Initial.resx">
+      <DependentUpon>201906011654004_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\EF\Migrations\201906011713221_RecipientAddDescription.resx">
+      <DependentUpon>201906011713221_RecipientAddDescription.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
